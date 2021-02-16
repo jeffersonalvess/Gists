@@ -1,4 +1,4 @@
-package com.jeffersonalvess.repository
+package com.jeffersonalvess.domain
 
 import org.junit.Test
 

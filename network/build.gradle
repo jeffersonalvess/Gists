@@ -33,17 +33,14 @@ android {
 }
 
 dependencies {
-
     implementation Deps.android.gson
-
+    implementation Deps.koin.android
+    implementation Deps.koin.core
     implementation Deps.okhttp.core
     implementation Deps.okhttp.mockBrowser
-
     implementation Deps.retrofit.core
     implementation Deps.retrofit.gson
-
-    implementation Deps.koin.core
-    implementation Deps.koin.android
+    implementation Deps.retrofit.rx
 
     testImplementation Deps.test.junit
 }

@@ -23,32 +23,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
 }
 
 dependencies {
-
     implementation project(":database")
     implementation project(":network")
 
+    implementation Deps.koin.android
+    implementation Deps.koin.core
+    implementation Deps.lifeCycle.liveData
+    implementation Deps.paging.runtime
+    implementation Deps.rx.rxandroid
     implementation Deps.retrofit.core
     implementation Deps.retrofit.gson
+    implementation Deps.retrofit.rx
 
-    implementation Deps.koin.core
-    implementation Deps.koin.android
-
-    implementation Deps.lifeCycle.liveData
-
-    implementation Deps.coroutines.android
-    implementation Deps.coroutines.core
-
-    testImplementation Deps.test.coroutines
     testImplementation Deps.test.junit
     androidTestImplementation Deps.test.espresso
 }

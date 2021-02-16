@@ -1,4 +1,4 @@
-package com.jeffersonalvess.repository
+package com.jeffersonalvess.domain
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.jeffersonalvess.repository.test", appContext.packageName)
+        assertEquals("com.jeffersonalvess.domain.test", appContext.packageName)
     }
 }

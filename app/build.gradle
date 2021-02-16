@@ -36,11 +36,10 @@ android {
 }
 
 dependencies {
-
-    implementation Deps.android.ktx
     implementation Deps.android.appcompat
-    implementation Deps.android.material
     implementation Deps.android.constraintLayout
+    implementation Deps.android.ktx
+    implementation Deps.android.material
     implementation Deps.lifeCycle.liveData
     implementation Deps.lifeCycle.viewModel
     implementation Deps.navigation.fragment

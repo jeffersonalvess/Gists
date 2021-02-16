@@ -35,18 +35,14 @@ android {
 }
 
 dependencies {
-
+    implementation Deps.koin.core
+    implementation Deps.koin.android
+    implementation Deps.lifeCycle.liveData
     kapt Deps.room.compiler
     implementation Deps.room.ktx
     implementation Deps.room.runtime
 
-    implementation Deps.lifeCycle.liveData
-
-    implementation Deps.koin.core
-    implementation Deps.koin.android
-
     testImplementation Deps.test.junit
     testImplementation Deps.test.room
-
     androidTestImplementation Deps.test.espresso
 }

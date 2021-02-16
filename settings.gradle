@@ -1,5 +1,5 @@
 rootProject.name = "Gists"
 include ':app'
-include ':network'
 include ':database'
-include ':repository'
+include ':network'
+include ':domain'

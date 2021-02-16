@@ -16,7 +16,7 @@ object Versions {
     const val kotlin = "1.4.21"
 
     // Dependency Injection
-    const val koin = "2.0.1"
+    const val koin = "2.2.2"
 
     // UI
     const val appcompat = "1.2.0"
@@ -25,8 +25,11 @@ object Versions {
     const val material = "1.3.0"
 
     // Lifecycle
-    const val coroutines = "1.4.2"
+    const val rx = "2.1.1"
     const val lifecycle = "2.3.0"
+
+    // Paging
+    const val paging = "2.1.2"
 
     // Kotlin libs
     const val core_ktx = "1.3.2"
@@ -58,15 +61,16 @@ object Deps {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
 
     val android = AndroidDeps
-    val coroutines = CoroutinesDeps
     val gradle = GradleDeps
     val koin = KoinDeps
     val lifeCycle = LifeCycleDeps
     val navigation = NavigationDeps
     val okhttp = OkHttpDeps
+    val paging = PagingDeps
     val picasso = PicassoDeps
     val retrofit = RetrofitDeps
     val room = RoomDeps
+    val rx = RxDeps
     val test = TestDeps
 }
 
@@ -96,14 +100,18 @@ object NavigationDeps {
     const val ui =  "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 }
 
-object CoroutinesDeps {
-    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
-    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+object RxDeps {
+    const val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rx}"
+}
+
+object PagingDeps {
+    const val runtime = "androidx.paging:paging-runtime:${Versions.paging}"
 }
 
 object RetrofitDeps {
     const val core = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val rx = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
 }
 
 object OkHttpDeps {
@@ -123,7 +131,6 @@ object RoomDeps {
 
 object TestDeps {
     const val androidx = "androidx.arch.core:core-testing:${Versions.core_testing}"
-    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val junit = "junit:junit:${Versions.junit}"
     const val junitKtx = "androidx.test.ext:junit:${Versions.junit_ktx}"
