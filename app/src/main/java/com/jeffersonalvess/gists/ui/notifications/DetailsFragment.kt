@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.jeffersonalvess.gists.R
 import com.jeffersonalvess.gists.databinding.FragmentNotificationsBinding
 
-class NotificationsFragment : Fragment() {
+class DetailsFragment : Fragment() {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
     private var _binding: FragmentNotificationsBinding? = null
