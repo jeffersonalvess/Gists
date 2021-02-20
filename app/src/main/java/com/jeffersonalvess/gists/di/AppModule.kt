@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    viewModel { GistsViewModel(get()) }
+    viewModel { params -> GistsViewModel(get {params}) }
 }

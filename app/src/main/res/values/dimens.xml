@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- List items dimens -->
+    <dimen name="list_progress_margin">20dp</dimen>
     <dimen name="list_padding">8dp</dimen>
     <dimen name="list_user_avatar_size">48dp</dimen>
     <dimen name="list_user_avatar_distance">8dp</dimen>

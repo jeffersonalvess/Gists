@@ -15,8 +15,7 @@ import java.util.concurrent.TimeUnit
 @SuppressLint("LongLogTag")
 class GistListDataSource (
     private val requestGistList: UseCase<RequestGistList.Param, Single<List<Gist>>>,
-//    private val onErrorCallback: () -> Unit,
-//    private val onSuccessCallback: () -> Unit
+    private val onErrorCallback: () -> Unit
 ) : PageKeyedDataSource<Int, Gist>() {
 
     private var disposable: Disposable? = null
@@ -32,7 +31,6 @@ class GistListDataSource (
             .subscribe({ response ->
                 val result = sendResultOrTriggerError(response)
                 if (result.isNotEmpty()) {
-                    //onSuccessCallback()
                     callback.onResult(response, null, 1)
                 }
             }, { error ->
@@ -66,7 +64,7 @@ class GistListDataSource (
 
     private fun sendResultOrTriggerError(response: List<Gist>): List<Gist> {
         if (response.isNullOrEmpty()) {
-          //  onErrorCallback()
+            onErrorCallback()
         }
 
         return response

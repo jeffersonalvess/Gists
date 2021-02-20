@@ -13,20 +13,20 @@ import org.koin.dsl.module
 val domainModule = module {
 
     // Provides an instance of [GistRepository]
-    single { provideGistRepository(get(), get()) as GistRepository }
+    single<GistRepository> { provideGistRepository(get(), get()) }
 
     // Provides an instance of [RequestGistList]
-    single { provideRequestGistList(get()) as UseCase<RequestGistList.Param, Single<List<Gist>>>  }
+    single<UseCase<RequestGistList.Param, Single<List<Gist>>>> { provideRequestGistList(get()) }
 
     // Provides an instance of [RequestGist]
     // single<UseCase<RequestGist.Param, Single<Gist>>> { provideRequestGist(get()) }
 
     // Provides an instance of [GistListDataSource]
-    single { //(onErrorCallback: () -> Unit, onSuccessCallback: () -> Unit) ->
-        provideGistListDataSource(get()/*, onErrorCallback, onSuccessCallback*/) as PageKeyedDataSource<Int, Gist>
+    factory<PageKeyedDataSource<Int, Gist>> { (onErrorCallback: () -> Unit) ->
+        provideGistListDataSource(get(), onErrorCallback)
     }
 
     // Provides an instance of [GistListDataSourceFactory]
-    single { providesGistListDataSourceFactory(get()) as DataSource.Factory<Int, Gist> }
+    factory<DataSource.Factory<Int, Gist>> { params -> providesGistListDataSourceFactory(get { params }) }
 }
 

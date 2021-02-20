@@ -11,10 +11,13 @@
         android:label="@string/title_gists"
         tools:layout="@layout/fragment_gists">
 
-<!--        <action-->
-<!--            android:id="@+id/action_gistsFragment_to_detailsFragment"-->
-<!--            app:destination="@id/navigation_details" />-->
-
+        <action
+            android:id="@+id/action_gistsFragment_to_detailsFragment"
+            app:destination="@id/navigation_details"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -29,8 +32,16 @@
         android:label="@string/title_details"
         tools:layout="@layout/fragment_details">
 
-<!--        <argument-->
-<!--            android:name="gist"-->
-<!--            app:argType="com.jeffersonalvess.network.dto.Gist" />-->
+        <action
+            android:id="@+id/action_detailsFragment_to_gistsFragment"
+            app:destination="@id/navigation_gists"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <argument
+            android:name="gist"
+            app:argType="com.jeffersonalvess.network.dto.Gist" />
     </fragment>
 </navigation>

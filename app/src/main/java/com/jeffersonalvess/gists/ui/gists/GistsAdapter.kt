@@ -32,7 +32,7 @@ class GistsAdapter(
     class GistViewHolder(private val binding: GistListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(gist: Gist) {
             binding.avatar.networkImage(
-                gist.owner.avatar_url,
+                gist.owner.avatar,
                 R.drawable.gist_placeholder
             )
 
