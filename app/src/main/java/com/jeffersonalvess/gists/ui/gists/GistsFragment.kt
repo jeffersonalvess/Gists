@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout.HORIZONTAL
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import com.jeffersonalvess.gists.R
-
 import com.jeffersonalvess.gists.databinding.FragmentGistsBinding
 import com.jeffersonalvess.network.dto.Gist
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,11 +32,17 @@ class GistsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = GistsAdapter(::goToDetails)
+        binding.recyclerView.addItemDecoration(DividerItemDecoration(context, HORIZONTAL))
 
-        viewModel.gistList.observe(requireActivity(), Observer {
+        viewModel.gistList.observe(viewLifecycleOwner, {
             (binding.recyclerView.adapter as GistsAdapter).apply {
                 submitList(it)
 

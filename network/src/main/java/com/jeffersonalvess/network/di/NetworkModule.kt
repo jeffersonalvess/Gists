@@ -7,7 +7,6 @@ import org.koin.dsl.module
 
 val networkModule = module {
 
-    //
     factory { provideWebCache(androidApplication()) }
     factory { provideOkHttp(get()) }
     factory { provideGson() }

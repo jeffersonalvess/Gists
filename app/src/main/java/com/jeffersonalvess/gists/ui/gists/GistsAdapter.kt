@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.jeffersonalvess.gists.R
 import com.jeffersonalvess.gists.databinding.GistListItemBinding
 import com.jeffersonalvess.gists.extensions.networkImage
@@ -39,6 +40,12 @@ class GistsAdapter(
                 gist.owner.login,
                 itemView.context.getString(R.string.name_fallback)
             )
+
+            gist.files.entries.map {
+                Chip(itemView.context).apply {
+                    text = it.value.type
+                }
+            }.forEach { binding.types.addView(it) }
         }
     }
 
