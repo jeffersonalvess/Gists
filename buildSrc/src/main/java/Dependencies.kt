@@ -12,7 +12,7 @@ object SdkVersions {
 
 object Versions {
     // Kotlin and Gradle plugins
-    const val buildGradle = "7.0.0-alpha06"
+    const val buildGradle = "7.0.0-alpha07"
     const val kotlin = "1.4.21"
 
     // Dependency Injection
@@ -145,4 +145,5 @@ object TestDeps {
 object GradleDeps {
     const val buildGradle = "com.android.tools.build:gradle:${Versions.buildGradle}"
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
 }

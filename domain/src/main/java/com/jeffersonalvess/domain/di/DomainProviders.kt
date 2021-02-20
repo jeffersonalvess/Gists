@@ -28,9 +28,9 @@ internal fun provideRequestGist(
 
 internal fun provideGistListDataSource(
     requestGistList: UseCase<RequestGistList.Param, Single<List<Gist>>>,
-    onErrorCallback: () -> Unit,
-    onSuccessCallback: () -> Unit
-) = GistListDataSource(requestGistList, onErrorCallback, onSuccessCallback)
+    //onErrorCallback: () -> Unit,
+    //onSuccessCallback: () -> Unit
+) = GistListDataSource(requestGistList/*, onErrorCallback, onSuccessCallback*/)
 
 internal fun providesGistListDataSourceFactory(
     gistListDataSource: PageKeyedDataSource<Int, Gist>

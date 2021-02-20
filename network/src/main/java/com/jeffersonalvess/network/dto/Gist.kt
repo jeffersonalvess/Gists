@@ -5,5 +5,5 @@ data class Gist (
     val description: String,
     val html_url: String,
     val owner: GistOwner,
-    val files: GistFile
+    val files: Files
 )

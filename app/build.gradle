@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -36,14 +37,24 @@ android {
 }
 
 dependencies {
+    implementation(project(":database"))
+    implementation(project(":network"))
+    implementation(project(":domain"))
+
     implementation Deps.android.appcompat
+    implementation Deps.android.circleImageView
     implementation Deps.android.constraintLayout
     implementation Deps.android.ktx
     implementation Deps.android.material
+    implementation Deps.koin.android
+    implementation Deps.koin.core
+    implementation Deps.koin.viewModel
     implementation Deps.lifeCycle.liveData
     implementation Deps.lifeCycle.viewModel
     implementation Deps.navigation.fragment
     implementation Deps.navigation.ui
+    implementation Deps.paging.runtime
+    implementation Deps.picasso.core
 
     testImplementation Deps.test.junit
     androidTestImplementation Deps.test.junitKtx

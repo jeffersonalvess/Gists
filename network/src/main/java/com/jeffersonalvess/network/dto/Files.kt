@@ -1,5 +1,5 @@
 package com.jeffersonalvess.network.dto
 
-data class GistFile (
+data class Files (
     val type: String
 )
