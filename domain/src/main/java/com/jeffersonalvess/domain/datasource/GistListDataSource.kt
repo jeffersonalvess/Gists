@@ -21,12 +21,6 @@ class GistListDataSource (
 
     private var disposable: Disposable? = null
 
-    private var totalPages = 0
-        get() {
-            if (field == 0) return field
-            return field / ITEMS_PER_PAGE
-        }
-
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Gist>
@@ -48,7 +42,7 @@ class GistListDataSource (
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Gist>) {
-        if (params.key <= totalPages) {
+        if (params.key <= TOTAL_PAGES) {
             disposable = requestGistList.run(RequestGistList.Param(ITEMS_PER_PAGE, params.key))
                 .retryWhen { it.delay(5, TimeUnit.SECONDS) }
                 .subscribeOn(Schedulers.io())
@@ -75,7 +69,6 @@ class GistListDataSource (
           //  onErrorCallback()
         }
 
-        totalPages = response.size
         return response
     }
 
@@ -84,5 +77,6 @@ class GistListDataSource (
 
         private const val ITEMS_PER_PAGE = 30
 
+        private const val TOTAL_PAGES = 100
     }
 }

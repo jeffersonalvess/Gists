@@ -45,7 +45,11 @@ class GistsAdapter(
                 Chip(itemView.context).apply {
                     text = it.value.type
                 }
-            }.forEach { binding.types.addView(it) }
+            }.forEach {
+                if (binding.types.childCount == 0) {
+                    binding.types.addView(it)
+                }
+            }
         }
     }
 
