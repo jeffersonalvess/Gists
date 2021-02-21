@@ -43,11 +43,18 @@ dependencies {
     implementation Deps.koin.core
     implementation Deps.lifeCycle.liveData
     implementation Deps.paging.runtime
-    implementation Deps.rx.rxandroid
     implementation Deps.retrofit.core
     implementation Deps.retrofit.gson
     implementation Deps.retrofit.rx
+    implementation Deps.rx.rxandroid
 
+    testImplementation Deps.test.archCoreTest
+    testImplementation Deps.test.ktx
     testImplementation Deps.test.junit
+    testImplementation Deps.test.mockitoCore
+    testImplementation Deps.test.mockitoKotlin
+    testImplementation Deps.test.roboeletric
+
     androidTestImplementation Deps.test.espresso
+    androidTestImplementation Deps.test.junitKtx
 }

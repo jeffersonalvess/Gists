@@ -57,7 +57,14 @@ dependencies {
     implementation Deps.paging.runtime
     implementation Deps.picasso.core
 
+
+    testImplementation Deps.test.archCoreTest
+    testImplementation Deps.test.ktx
     testImplementation Deps.test.junit
-    androidTestImplementation Deps.test.junitKtx
+    testImplementation Deps.test.mockitoCore
+    testImplementation Deps.test.mockitoKotlin
+    testImplementation Deps.test.roboeletric
+
     androidTestImplementation Deps.test.espresso
+    androidTestImplementation Deps.test.junitKtx
 }

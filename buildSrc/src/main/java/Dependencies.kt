@@ -52,9 +52,11 @@ object Versions {
     const val espresso = "3.3.0"
     const val junit = "4.13.2"
     const val junit_ktx = "1.1.2"
-    const val mockito = "2.27.0"
+    const val mockito = "2.28.2"
     const val mockito_kotlin = "2.1.0"
     const val test_runner = "1.3.0"
+    const val archTestingVersion = "2.1.0"
+    const val robolectricVersion = "4.5.1"
 }
 
 object Deps {
@@ -140,6 +142,8 @@ object TestDeps {
     const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockito_kotlin}"
     const val room = "androidx.room:room-testing:${Versions.room}"
     const val runner = "androidx.test:runner:${Versions.test_runner}"
+    const val archCoreTest = "androidx.arch.core:core-testing:${Versions.archTestingVersion}"
+    const val roboeletric = "org.robolectric:robolectric:${Versions.robolectricVersion}"
 }
 
 object GradleDeps {

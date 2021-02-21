@@ -44,4 +44,5 @@ dependencies {
     implementation Deps.retrofit.rx
 
     testImplementation Deps.test.junit
+    testImplementation Deps.test.mockitoCore
 }
