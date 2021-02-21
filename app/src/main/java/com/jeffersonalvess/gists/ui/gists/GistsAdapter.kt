@@ -41,14 +41,12 @@ class GistsAdapter(
                 itemView.context.getString(R.string.name_fallback)
             )
 
-            gist.files.entries.map {
-                Chip(itemView.context).apply {
-                    text = it.value.type
-                }
-            }.forEach {
-                if (binding.types.childCount == 0) {
-                    binding.types.addView(it)
-                }
+            if (binding.types.childCount == 0) {
+                gist.files.entries.map {
+                    Chip(itemView.context).apply {
+                        text = it.value.type
+                    }
+                }.forEach { binding.types.addView(it) }
             }
         }
     }
