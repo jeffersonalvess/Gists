@@ -2,11 +2,13 @@
     <string name="app_name">Gists</string>
     <string name="title_gists">Gists</string>
     <string name="title_favorites">Favorites</string>
-    <string name="title_details">Details</string>
+    <string name="title_details">Gist Details</string>
     <string name="favorite_button_description">Touch this button to save this gist as favorite</string>
     <string name="name_fallback">Anonymous</string>
     <string name="description_fallback">Unnamed</string>
     <string name="error_loading_gists">Error while loading gists from repository</string>
     <string name="oops_error_message">Oops, we got an error trying to fetch the results. Let\'s try again?</string>
     <string name="retry">retry</string>
+    <string name="owner_subtitle">Owner</string>
+    <string name="content_subtitle">Content</string>
 </resources>

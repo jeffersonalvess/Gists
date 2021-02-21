@@ -12,9 +12,6 @@ data class Files (
     @SerializedName("type")
     val type: String,
 
-    @SerializedName("language")
-    val language: String,
-
     @SerializedName("raw_url")
     val url: String
 )  : Parcelable

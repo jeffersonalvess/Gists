@@ -13,6 +13,7 @@ import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
+// TODO: Not working
 @RunWith(JUnit4::class)
 class GistViewModelTest {
 
@@ -27,7 +28,7 @@ class GistViewModelTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        viewModel = GistsViewModel(dataSourceFactory, pageBuilder)
+        viewModel = GistsViewModel(dataSourceFactory)
     }
 
     @Test

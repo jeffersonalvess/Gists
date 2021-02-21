@@ -11,4 +11,15 @@
     <dimen name="list_user_description_size">14sp</dimen>
     <dimen name="list_user_name_size">12sp</dimen>
     <dimen name="list_favorite_button_size">32dp</dimen>
+
+    <!-- Details screen -->
+    <dimen name="details_padding">8dp</dimen>
+    <dimen name="details_gist_name">20sp</dimen>
+    <dimen name="details_subtitle_text">14sp</dimen>
+    <dimen name="details_username_text">12dp</dimen>
+    <dimen name="details_timestamp_text">12sp</dimen>
+    <dimen name="details_subtitle_margin_top">16dp</dimen>
+    <dimen name="details_subtitle_margin_bottom">8dp</dimen>
+    <dimen name="details_avatar_margin">8dp</dimen>
+    <dimen name="details_item_margin">16dp</dimen>
 </resources>

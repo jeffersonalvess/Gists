@@ -1,11 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.details.DetailsFragment">
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.jeffersonalvess.gists.ui.details.DetailsViewModel" />
+    </data>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/details_padding"
+        tools:context=".ui.details.DetailsFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:descriptionText="@{ viewModel.gist.description }"
+            android:textSize="@dimen/details_gist_name"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/favorite"/>
+
+        <ImageButton
+            android:id="@+id/favorite"
+            android:layout_width="@dimen/list_favorite_button_size"
+            android:layout_height="@dimen/list_favorite_button_size"
+            android:src="@drawable/ic_baseline_favorite_border"
+            android:background="@android:color/transparent"
+            android:tint="@color/gold"
+            android:contentDescription="@string/favorite_button_description"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/owner_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/owner_subtitle"
+            android:textStyle="bold"
+            android:textSize="@dimen/details_subtitle_text"
+            android:layout_marginTop="@dimen/details_subtitle_margin_top"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="@dimen/details_subtitle_margin_bottom"
+            android:layout_marginStart="@dimen/details_item_margin"
+            app:userImage="@{ viewModel.gist.owner.avatar }"
+            app:layout_constraintTop_toBottomOf="@id/owner_subtitle"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:nameText="@{ viewModel.gist.owner.login }"
+            android:textStyle="bold"
+            android:textSize="@dimen/details_username_text"
+            android:layout_marginStart="@dimen/details_avatar_margin"
+            app:layout_constraintTop_toTopOf="@id/avatar"
+            app:layout_constraintBottom_toTopOf="@id/date"
+            app:layout_constraintStart_toEndOf="@id/avatar"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:formattedDate="@{ viewModel.gist.creation }"
+            android:textSize="@dimen/details_timestamp_text"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintBottom_toBottomOf="@id/avatar"
+            app:layout_constraintStart_toStartOf="@id/name"/>
+
+        <TextView
+            android:id="@+id/content_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/content_subtitle"
+            android:textStyle="bold"
+            android:textSize="@dimen/details_subtitle_text"
+            android:layout_marginTop="@dimen/details_subtitle_margin_top"
+            app:layout_constraintTop_toBottomOf="@id/avatar"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/files"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/details_subtitle_margin_bottom"
+            android:layout_marginStart="@dimen/details_item_margin"
+            app:fillGroup="@{ viewModel.gist.files }"
+            app:layout_constraintTop_toBottomOf="@id/content_subtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -50,6 +50,9 @@ class GistsAdapter(
                 gist.files.entries.map {
                     Chip(itemView.context).apply {
                         text = it.value.type
+
+                        // Disable touch animation
+                        setOnTouchListener { _, _ ->  true }
                     }
                 }.forEach { binding.types.addView(it) }
             }

@@ -5,7 +5,7 @@ object Releases {
 
 object SdkVersions {
     const val compileSDK = 30
-    const val minSDK = 21
+    const val minSDK = 26
     const val targetSDK = 30
     const val buildTools = "30.0.3"
 }

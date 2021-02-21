@@ -3,11 +3,15 @@ package com.jeffersonalvess.gists.ui.details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.jeffersonalvess.network.dto.Gist
 
-class DetailsViewModel : ViewModel() {
+class DetailsViewModel(
+    private val data: Gist
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    private val _gist = MutableLiveData<Gist>().apply {
+        value = data
     }
-    val text: LiveData<String> = _text
+
+    val gist: LiveData<Gist> = _gist
 }
