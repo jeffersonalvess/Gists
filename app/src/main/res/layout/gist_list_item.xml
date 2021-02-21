@@ -14,15 +14,27 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/list_user_description_size"
+        android:layout_marginStart="@dimen/list_user_avatar_distance"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintEnd_toStartOf="@id/favorite"/>
+
+    <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:textSize="@dimen/list_user_name_size"
-        android:layout_marginStart="@dimen/list_user_avatar_distance"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
         app:layout_constraintBottom_toTopOf="@id/types"
-        app:layout_constraintStart_toEndOf="@id/avatar"/>
+        app:layout_constraintStart_toStartOf="@id/description"/>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/types"
@@ -30,7 +42,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintStart_toStartOf="@id/description"
         app:layout_constraintEnd_toStartOf="@id/favorite"/>
 
     <ImageButton

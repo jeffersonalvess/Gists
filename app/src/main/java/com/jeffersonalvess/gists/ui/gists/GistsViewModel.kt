@@ -18,6 +18,7 @@ class GistsViewModel(
             .setPageSize(1)
             .setEnablePlaceholders(true)
             .build()
+
         gistList = LivePagedListBuilder(dataSourceFactory, pagedListConfig).build()
     }
 

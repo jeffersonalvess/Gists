@@ -16,6 +16,9 @@ data class Gist (
     @SerializedName("html_url")
     val url: String,
 
+    @SerializedName("created_at")
+    val creation: String,
+
     @SerializedName("owner")
     val owner: GistOwner,
 

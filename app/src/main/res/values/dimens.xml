@@ -8,6 +8,7 @@
     <dimen name="list_padding">8dp</dimen>
     <dimen name="list_user_avatar_size">48dp</dimen>
     <dimen name="list_user_avatar_distance">8dp</dimen>
-    <dimen name="list_user_name_size">16sp</dimen>
+    <dimen name="list_user_description_size">14sp</dimen>
+    <dimen name="list_user_name_size">12sp</dimen>
     <dimen name="list_favorite_button_size">32dp</dimen>
 </resources>

@@ -36,6 +36,11 @@ class GistsAdapter(
                 R.drawable.gist_placeholder
             )
 
+            binding.description.updateTextOrFallback(
+                gist.description,
+                itemView.context.getString(R.string.description_fallback)
+            )
+
             binding.name.updateTextOrFallback(
                 gist.owner.login,
                 itemView.context.getString(R.string.name_fallback)
