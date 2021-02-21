@@ -97,9 +97,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/details_subtitle_margin_bottom"
             android:layout_marginStart="@dimen/details_item_margin"
-            app:fillGroup="@{ viewModel.gist.files }"
+            app:files="@{ viewModel.gist.files }"
+            app:url="@{ viewModel.gist.url }"
             app:layout_constraintTop_toBottomOf="@id/content_subtitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

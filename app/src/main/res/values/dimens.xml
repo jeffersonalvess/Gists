@@ -22,4 +22,5 @@
     <dimen name="details_subtitle_margin_bottom">8dp</dimen>
     <dimen name="details_avatar_margin">8dp</dimen>
     <dimen name="details_item_margin">16dp</dimen>
+    <dimen name="details_see_gist_top">32dp</dimen>
 </resources>
