@@ -13,21 +13,19 @@ import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 @SuppressLint("LongLogTag")
-class GistListDataSource (
+class GistListDataSource(
     private val requestGistList: UseCase<RequestGistList.Param, Single<List<Gist>>>,
     private val onErrorCallback: () -> Unit
 ) : PageKeyedDataSource<Int, Gist>() {
 
     private var disposable: Disposable? = null
+    private var retryCallback: (() -> Unit)? = null
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Gist>
     ) {
         disposable = requestGistList.run(RequestGistList.Param(ITEMS_PER_PAGE, 0))
-            .retryWhen { it.delay(5L, TimeUnit.SECONDS) }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ response ->
                 val result = sendResultOrTriggerError(response)
                 if (result.isNotEmpty()) {
@@ -35,6 +33,8 @@ class GistListDataSource (
                 }
             }, { error ->
                 Log.e(TAG, "Failed to load gists", error)
+                onErrorCallback()
+                retryCallback = { loadInitial(params, callback) }
             })
 
     }
@@ -43,8 +43,6 @@ class GistListDataSource (
         if (params.key <= TOTAL_PAGES) {
             disposable = requestGistList.run(RequestGistList.Param(ITEMS_PER_PAGE, params.key))
                 .retryWhen { it.delay(5, TimeUnit.SECONDS) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
                     val result = sendResultOrTriggerError(response)
                     if (result.isNotEmpty()) {
@@ -52,6 +50,7 @@ class GistListDataSource (
                     }
                 }, { error ->
                     Log.e(TAG, "Failed to load gists", error)
+                    retryCallback = { loadAfter(params, callback) }
                 })
         }
     }
@@ -60,6 +59,10 @@ class GistListDataSource (
 
     fun finalize() {
         disposable?.dispose()
+    }
+
+    fun retry() {
+        retryCallback?.invoke()
     }
 
     private fun sendResultOrTriggerError(response: List<Gist>): List<Gist> {

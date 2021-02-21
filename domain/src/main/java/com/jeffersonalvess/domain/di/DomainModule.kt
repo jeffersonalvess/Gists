@@ -13,9 +13,7 @@ import org.koin.dsl.module
 val domainModule = module {
 
     // Provides an instance of [GistRepository]
-    single<GistRepository> { (onErrorCallback: () -> Unit) ->
-        provideGistRepository(get(), get(), onErrorCallback)
-    }
+    single<GistRepository> { provideGistRepository(get(), get()) }
 
     // Provides an instance of [RequestGistList]
     single<UseCase<RequestGistList.Param, Single<List<Gist>>>> { params ->
@@ -30,4 +28,3 @@ val domainModule = module {
     // Provides an instance of [GistListDataSourceFactory]
     factory<DataSource.Factory<Int, Gist>> { params -> providesGistListDataSourceFactory(get { params }) }
 }
-

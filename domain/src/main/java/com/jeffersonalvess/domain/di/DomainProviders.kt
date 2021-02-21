@@ -15,8 +15,7 @@ import io.reactivex.Single
 internal fun provideGistRepository(
     cache: Cache,
     api: GistApi,
-    onErrorCallback: () -> Unit
-) = GistRepositoryImpl(cache, api, onErrorCallback)
+) = GistRepositoryImpl(cache, api)
 
 internal fun provideRequestGistList(
     gistRepository: GistRepository

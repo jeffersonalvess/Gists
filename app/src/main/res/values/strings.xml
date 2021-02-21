@@ -7,4 +7,6 @@
     <string name="name_fallback">Anonymous</string>
     <string name="description_fallback">Unnamed</string>
     <string name="error_loading_gists">Error while loading gists from repository</string>
+    <string name="oops_error_message">Oops, we got an error trying to fetch the results. Let\'s try again?</string>
+    <string name="retry">retry</string>
 </resources>

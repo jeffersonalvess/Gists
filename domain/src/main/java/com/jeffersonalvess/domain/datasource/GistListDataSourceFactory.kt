@@ -12,6 +12,10 @@ class GistListDataSourceFactory(
         return gistListDataSource
     }
 
+    fun retry() {
+        (gistListDataSource as GistListDataSource).retry()
+    }
+
     fun finalize() {
         (gistListDataSource as GistListDataSource).finalize()
     }
