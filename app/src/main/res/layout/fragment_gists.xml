@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/gist_list_item" />
+        tools:listitem="@layout/gists_list_item" />
 
     <ProgressBar
         android:id="@+id/loadingIndicator"

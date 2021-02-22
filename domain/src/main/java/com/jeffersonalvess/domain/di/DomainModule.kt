@@ -2,6 +2,7 @@ package com.jeffersonalvess.domain.di
 
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
+import com.jeffersonalvess.domain.repository.FavoritesRepository
 import com.jeffersonalvess.domain.repository.GistRepository
 import com.jeffersonalvess.domain.usecases.RequestGistList
 import com.jeffersonalvess.domain.usecases.UseCase
@@ -14,6 +15,8 @@ val domainModule = module {
 
     // Provides an instance of [GistRepository]
     single<GistRepository> { provideGistRepository(get(), get()) }
+
+    single<FavoritesRepository> { providesFavoritesRepository(get()) }
 
     // Provides an instance of [RequestGistList]
     single<UseCase<RequestGistList.Param, Single<List<Gist>>>> { params ->

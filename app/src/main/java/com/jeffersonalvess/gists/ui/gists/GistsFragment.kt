@@ -8,6 +8,8 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import com.jeffersonalvess.gists.R
 import com.jeffersonalvess.gists.databinding.FragmentGistsBinding
 import com.jeffersonalvess.gists.extensions.loadingVisibility
 import com.jeffersonalvess.network.dto.Gist
@@ -42,7 +44,7 @@ class GistsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView.adapter = GistsAdapter(::goToDetails)
+        binding.recyclerView.adapter = GistsAdapter(::goToDetails, ::addToFavorites)
 
         viewModel.gistList.observe(viewLifecycleOwner, {
             with(binding.recyclerView.adapter as GistsAdapter) {
@@ -58,6 +60,16 @@ class GistsFragment : Fragment() {
     private fun goToDetails(gist: Gist) {
         val actionDetail = GistsFragmentDirections.actionGistsFragmentToDetailsFragment(gist)
         findNavController().navigate(actionDetail)
+    }
+
+    private fun addToFavorites(gist: Gist) {
+        viewModel.addFavorite(gist)
+
+        Snackbar.make(
+            binding.recyclerView,
+            R.string.confirm_favorite_added,
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 
     private fun loadingVisibility(shouldShow: Boolean) {

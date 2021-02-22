@@ -4,11 +4,14 @@ import androidx.lifecycle.*
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.jeffersonalvess.database.entities.Favorites
 import com.jeffersonalvess.domain.datasource.GistListDataSourceFactory
+import com.jeffersonalvess.domain.repository.FavoritesRepository
 import com.jeffersonalvess.network.dto.Gist
 
 class GistsViewModel(
-    private val dataSourceFactory: DataSource.Factory<Int, Gist>
+    private val dataSourceFactory: DataSource.Factory<Int, Gist>,
+    private val favoritesRepository: FavoritesRepository
 ) : ViewModel() {
 
     private val _showProgress = MutableLiveData<Boolean>()
@@ -36,6 +39,15 @@ class GistsViewModel(
 
     fun retry() {
         (dataSourceFactory as GistListDataSourceFactory).retry()
+    }
+
+    fun addFavorite(gist: Gist) {
+        favoritesRepository.addFavorite(
+            Favorites(
+                name = gist.owner.login,
+                image = gist.owner.avatar
+            )
+        )
     }
 
 }

@@ -4,6 +4,7 @@
     <string name="title_favorites">Favorites</string>
     <string name="title_details">Gist Details</string>
     <string name="favorite_button_description">Touch this button to save this gist as favorite</string>
+    <string name="remove_button_description">Touch this button to remove this gist from favorites list</string>
     <string name="name_fallback">Anonymous</string>
     <string name="description_fallback">Unnamed</string>
     <string name="error_loading_gists">Error while loading gists from repository</string>
@@ -12,4 +13,6 @@
     <string name="owner_subtitle">Owner</string>
     <string name="content_subtitle">Content</string>
     <string name="see_gist">Check out full Gist</string>
+    <string name="confirm_favorite_added">Favorite added</string>
+    <string name="confirm_favorite_removal">Favorite removed</string>
 </resources>

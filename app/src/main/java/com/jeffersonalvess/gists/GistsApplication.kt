@@ -1,6 +1,7 @@
 package com.jeffersonalvess.gists
 
 import android.app.Application
+import com.jeffersonalvess.database.di.databaseModule
 import com.jeffersonalvess.domain.di.domainModule
 import com.jeffersonalvess.gists.di.appModule
 import com.jeffersonalvess.network.di.networkModule
@@ -17,6 +18,7 @@ class GistsApplication: Application() {
             androidContext(this@GistsApplication)
             modules(
                 appModule +
+                databaseModule+
                 domainModule +
                 networkModule
             )

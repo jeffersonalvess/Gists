@@ -7,19 +7,20 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.jeffersonalvess.gists.R
-import com.jeffersonalvess.gists.databinding.GistListItemBinding
+import com.jeffersonalvess.gists.databinding.GistsListItemBinding
 import com.jeffersonalvess.gists.extensions.networkImage
 import com.jeffersonalvess.gists.extensions.updateTextOrFallback
 import com.jeffersonalvess.network.dto.Gist
 
 class GistsAdapter(
-    private val clickCallback: (Gist) -> Unit
+    private val clickCallback: (Gist) -> Unit,
+    private val addFavoriteCallback: (Gist) -> Unit
 ) : PagedListAdapter<Gist, GistsAdapter.GistViewHolder>(gistDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GistViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = GistListItemBinding.inflate(layoutInflater, parent, false)
-        return GistViewHolder(view)
+        val view = GistsListItemBinding.inflate(layoutInflater, parent, false)
+        return GistViewHolder(view, addFavoriteCallback)
     }
 
     override fun onBindViewHolder(holder: GistViewHolder, position: Int) {
@@ -29,7 +30,10 @@ class GistsAdapter(
         }
     }
 
-    class GistViewHolder(private val binding: GistListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class GistViewHolder(
+        private val binding: GistsListItemBinding,
+        private val addFavoriteCallback: (Gist) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(gist: Gist) {
             binding.avatar.networkImage(
                 gist.owner.avatar,
@@ -45,6 +49,10 @@ class GistsAdapter(
                 gist.owner.login,
                 itemView.context.getString(R.string.name_fallback)
             )
+
+            binding.favorite.setOnClickListener {
+                addFavoriteCallback(gist)
+            }
 
             if (binding.types.childCount == 0) {
                 gist.files.entries.map {

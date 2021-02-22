@@ -49,7 +49,7 @@
         android:id="@+id/favorite"
         android:layout_width="@dimen/list_favorite_button_size"
         android:layout_height="@dimen/list_favorite_button_size"
-        android:src="@drawable/ic_baseline_favorite_border"
+        android:src="@drawable/ic_baseline_favorite"
         android:background="@android:color/transparent"
         android:tint="@color/gold"
         android:contentDescription="@string/favorite_button_description"
