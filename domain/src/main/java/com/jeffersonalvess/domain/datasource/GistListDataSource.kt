@@ -26,6 +26,7 @@ class GistListDataSource(
         callback: LoadInitialCallback<Int, Gist>
     ) {
         disposable = requestGistList.run(RequestGistList.Param(ITEMS_PER_PAGE, 0))
+            .retryWhen { it.delay(5, TimeUnit.SECONDS) }
             .subscribe({ response ->
                 val result = sendResultOrTriggerError(response)
                 if (result.isNotEmpty()) {
@@ -42,6 +43,7 @@ class GistListDataSource(
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Gist>) {
         if (params.key <= TOTAL_PAGES) {
             disposable = requestGistList.run(RequestGistList.Param(ITEMS_PER_PAGE, params.key))
+                .retryWhen { it.delay(5, TimeUnit.SECONDS) }
                 .subscribe({ response ->
                     val result = sendResultOrTriggerError(response)
                     if (result.isNotEmpty()) {
@@ -49,6 +51,7 @@ class GistListDataSource(
                     }
                 }, { error ->
                     Log.e(TAG, "Failed to load gists", error)
+                    onErrorCallback()
                     retryCallback = { loadAfter(params, callback) }
                 })
         }
